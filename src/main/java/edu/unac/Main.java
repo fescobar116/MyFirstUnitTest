@@ -7,6 +7,7 @@ public class Main {
         validatePrimerNumbersInRange();
         validatePrimerNumbersIncludeLimits();
         validateLowerLimitNegative();
+        validateLowerAndUpperLimit();
     }
 
     private static void validatePrimerNumbersInRange(){
@@ -37,6 +38,21 @@ public class Main {
         boolean exceptionThrown = false;
         try {
             PrimeNumbersUtil.getPrimeNumbersInRange(-1,29);
+        } catch (Exception e) {
+            exceptionThrown = true;
+        }
+
+        if(exceptionThrown) {
+            System.out.println("Nice!!!!!!");
+        } else {
+            throw new RuntimeException("ERROR - Exception required");
+        }
+    }
+
+    private static void validateLowerAndUpperLimit(){
+        boolean exceptionThrown = false;
+        try {
+            PrimeNumbersUtil.getPrimeNumbersInRange(29,11);
         } catch (Exception e) {
             exceptionThrown = true;
         }

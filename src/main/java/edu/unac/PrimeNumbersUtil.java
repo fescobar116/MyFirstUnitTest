@@ -6,7 +6,11 @@ import java.util.List;
 public class PrimeNumbersUtil {
     public static List<Integer> getPrimeNumbersInRange(int lowerLimit, int upperLimit) {
         if (lowerLimit < 0) {
-            throw new ArithmeticException("lowerLimit < 0");
+            throw new IllegalArgumentException("lowerLimit < 0");
+        }
+
+        if (lowerLimit > upperLimit){
+            throw new IllegalArgumentException("UpperLimit should be greater than lowerLimit");
         }
 
         List<Integer> primeNumbers = new ArrayList<>();
