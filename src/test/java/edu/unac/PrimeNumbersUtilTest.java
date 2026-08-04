@@ -1,6 +1,7 @@
 package edu.unac;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,7 +13,7 @@ class PrimeNumbersUtilTest {
                 PrimeNumbersUtil.getPrimeNumbersInRange(10,30);
         List<Integer> primerNumbersExpected = List.of(11, 13, 17, 19, 23, 29);
 
-        Assertions.assertEquals(primerNumbersExpected, primerNumbers);
+        assertEquals(primerNumbersExpected, primerNumbers);
     }
 
     @Test
@@ -21,6 +22,16 @@ class PrimeNumbersUtilTest {
                 PrimeNumbersUtil.getPrimeNumbersInRange(11,29);
         List<Integer> primerNumbersExpected = List.of(11, 13, 17, 19, 23, 29);
 
-        Assertions.assertEquals(primerNumbersExpected, primerNumbers);
+        assertEquals(primerNumbersExpected, primerNumbers);
+    }
+
+    @Test
+    void shouldThrowExceptionNegativeLowerLimit(){
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class ,
+                () ->  PrimeNumbersUtil.getPrimeNumbersInRange(-1,29)
+        );
+
+        assertEquals("lowerLimit < 0", ex.getMessage());
     }
 }
