@@ -34,4 +34,14 @@ class PrimeNumbersUtilTest {
 
         assertEquals("lowerLimit < 0", ex.getMessage());
     }
+
+    @Test
+    void upperLimitShouldBeGreaterThanLowerLimit(){
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> PrimeNumbersUtil.getPrimeNumbersInRange(30,29)
+        );
+
+        assertEquals("UpperLimit should be greater than lowerLimit", ex.getMessage());
+    }
 }
